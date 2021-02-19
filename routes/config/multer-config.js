@@ -16,4 +16,4 @@ function fileFilter (req, file, cb) {
     cb(null, false)
 }
 
-module.exports = multer({ storage: storage, fileFilter: fileFilter });
+module.exports = multer({ storage, fileFilter });
