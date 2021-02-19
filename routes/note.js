@@ -1,38 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var multerConfig = require('./config/multer-config');
+var mysqlConfig = require('./config/mysql-config');
 
 /**
- * 上传原始文件
- * @group note - 关于笔记部分的 API
- * @route POST /note/original-file
- * @param {file} file.formData.required 选择文件
- * @returns {object} 200 - 正常响应
- * @returns {Error}  default - 异常响应
- */
-router.post('/original-file', multerConfig.single('file'), function(req, res) {
-  res.setHeader('Content-Type', 'application/json;charset=utf-8');
-  if(req.file && req.file.mimetype === 'application/pdf')
-    res.send({ file: req.file, message: 'POST ok' });
-  else {
-    res.send({ message: 'Incorrect File Type' });
-  }
-});
-
-/**
- * @typedef Note
- * @property {string} id.required - ID
- * @property {date} createdDate - Created Date
- * @property {date} updatedDate - Updated Date
- * @property {integer} position - Note's Position in Original File
- * @property {File.model} file - Original File Object
- */
-
-/**
- * @typedef File
- * @property {string} id.required - ID
- * @property {integer} size.required - Size
- * @property {string} path.required - Path
+ * @typedef Note - 在文献中做的笔记
+ * @property {string} id.required - 笔记 ID
+ * @property {string} title.required - 关联的文献的标题
+ * @property {string} filename.required - 关联的文件名
+ * @property {date} createdDate.required - 创建时间
+ * @property {date} updatedDate - 更新时间
+ * @property {integer} position.required - 笔记对应于原文的定位
  */
 
 module.exports = router;

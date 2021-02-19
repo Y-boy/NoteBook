@@ -6,6 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var noteRouter = require('./routes/note');
+var fileRouter = require('./routes/file');
+var literatureRouter = require('./routes/literature');
 
 var app = express();
 
@@ -49,6 +51,8 @@ expressSwagger({
 });
 app.use('/', indexRouter);
 app.use('/note', noteRouter);
+app.use('/file', fileRouter);
+app.use('/literature', literatureRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
