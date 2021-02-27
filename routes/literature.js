@@ -20,8 +20,9 @@ router.post('/', function(req, res) {
 
 /**
  * @typedef Literature - 文献元数据
- * @property {string} title.required - 标题（暂时作为 ID 使用）
- * @property {string} responsibility.required - 责任者
+ * @property {string} doi.required - DOI 号，作为 ID 使用
+ * @property {string} title.required - 标题
+ * @property {string} responsibilities.required - 责任者
  * @property {string} type.required - 类型标志 - [ M, C, J, N, P ]
  * @property {string} date.required - 出版日期
  * @property {string} publisher.required - 出版者

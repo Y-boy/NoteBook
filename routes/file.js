@@ -17,7 +17,7 @@ router.post('/', multerConfig.single('file'), function(req, res) {
     let fileRecord = {
       name: req.file.originalname,
       size: req.file.size,
-      path: req.file.destination.split('public')[1] + req.file.originalname
+      path: '/' + req.file.originalname
     }
     mysqlConfig.insertRow('file', fileRecord, (err, result) => {
       if (err) {
